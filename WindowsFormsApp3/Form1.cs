@@ -17,9 +17,11 @@ namespace WindowsFormsApp3
             InitializeComponent();
         }
 
+        private bool isUnSaved = false;
+
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.Text.Length != 0)
+            if (isUnSaved)
             {
                 DialogResult confirm = MessageBox.Show("Discard Previous Changes ?", "Prompt", MessageBoxButtons.YesNo);
                 if (confirm == DialogResult.No) return;
@@ -31,7 +33,7 @@ namespace WindowsFormsApp3
 
         private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.Text.Length != 0)
+            if (isUnSaved)
             {
                 DialogResult confirm = MessageBox.Show("Discard Previous Changes ?", "Prompt", MessageBoxButtons.YesNo);
                 if (confirm == DialogResult.No) return;
@@ -41,18 +43,39 @@ namespace WindowsFormsApp3
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Create Save Dialog
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "Rich Text | *.rtf";
-            saveFileDialog1.Title = "Save an Image File";
             DialogResult save = saveFileDialog1.ShowDialog();
-
-            //Save the file
             if (save == DialogResult.OK)
             {
                 this.Text = saveFileDialog1.FileName.ToString();
-                richTextBox1.SaveFile(Convert.ToString(saveFileDialog1.FileName));
+                richTextBox1.SaveFile(saveFileDialog1.FileName);
+                this.isUnSaved = false;
             }
+            else
+            {
+                this.Text += " - Unsaved";
+            }
+        }
+
+        private void openToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            DialogResult open = openFileDialog1.ShowDialog();
+            if (open == DialogResult.OK)
+            {
+                if (isUnSaved)
+                {
+                    DialogResult confirm = MessageBox.Show("Discard Previous Changes ?", "Prompt", MessageBoxButtons.YesNo);
+                    if (confirm == DialogResult.No) return;
+                }
+                richTextBox1.LoadFile(openFileDialog1.FileName);
+                this.Text = openFileDialog1.FileName.ToString();
+                this.isUnSaved = false;
+            }
+
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            this.isUnSaved = true;
         }
     }
 }
