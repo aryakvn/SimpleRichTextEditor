@@ -14,7 +14,7 @@ namespace WindowsFormsApp3
         public SaveFileDialog saveDialog;
         public OpenFileDialog rtfOpen;
         public OpenFileDialog imgOpen;
-        public StatusStrip statusBar;
+        public ToolStripStatusLabel statusBar;
         public FontDialog fontDialog;
         public ColorDialog colorDialog;
         public Button forColorIndicator;
@@ -27,7 +27,7 @@ namespace WindowsFormsApp3
              SaveFileDialog saveDialog,
              OpenFileDialog rtfOpen,
              OpenFileDialog imgOpen,
-             StatusStrip statusBar,
+             ToolStripStatusLabel statusBar,
              FontDialog fontDialog,
              ColorDialog colorDialog,
              Button forColorIndicator,
@@ -46,7 +46,7 @@ namespace WindowsFormsApp3
             this.parrent = parrent;
         }
 
-        public void newAction(object sender, EventArgs e)
+        public void newAction()
         {
             if (this.isUnSaved)
             {
@@ -59,7 +59,7 @@ namespace WindowsFormsApp3
 
         }
 
-        public void saveAction(object sender, EventArgs e)
+        public void saveAction()
         {
             DialogResult save = this.saveDialog.ShowDialog();
             if (save == DialogResult.OK)
@@ -76,12 +76,12 @@ namespace WindowsFormsApp3
             }
         }
 
-        public void openAction(object sender, EventArgs e)
+        public void openAction()
         {
             DialogResult open = this.rtfOpen.ShowDialog();
             if (open == DialogResult.OK)
             {
-                if (isUnSaved)
+                if (this.isUnSaved)
                 {
                     DialogResult confirm = MessageBox.Show("Discard Previous Changes ?", "Text Editor", MessageBoxButtons.YesNo);
                     if (confirm == DialogResult.No) return;
@@ -93,54 +93,54 @@ namespace WindowsFormsApp3
 
         }
 
-        public void copyAction(object sender, EventArgs e)
+        public void copyAction()
         {
             this.richTextBox.Copy();
             this.statusBar.Text = "Copied";
         }
 
-        public void cutAction(object sender, EventArgs e)
+        public void cutAction()
         {
             this.richTextBox.Cut();
             this.statusBar.Text = "Cut";
         }
 
-        public void pasteAction(object sender, EventArgs e)
+        public void pasteAction()
         {
             this.richTextBox.Paste();
         }
 
-        public void undoAction(object sender, EventArgs e)
+        public void undoAction()
         {
             this.richTextBox.Undo();
         }
 
-        public void redoAction(object sender, EventArgs e)
+        public void redoAction()
         {
             this.richTextBox.Redo();
         }
 
-        public void selectAllAction(object sender, EventArgs e)
+        public void selectAllAction()
         {
             this.richTextBox.SelectAll();
         }
 
-        public void leftAlignAction(object sender, EventArgs e)
+        public void leftAlignAction()
         {
             this.richTextBox.SelectionAlignment = HorizontalAlignment.Left;
         }
 
-        public void centerAlignAction(object sender, EventArgs e)
+        public void centerAlignAction()
         {
             this.richTextBox.SelectionAlignment = HorizontalAlignment.Center;
         }
 
-        public void rightAlignAction(object sender, EventArgs e)
+        public void rightAlignAction()
         {
             this.richTextBox.SelectionAlignment = HorizontalAlignment.Right;
         }
 
-        public void fontAction(object sender, EventArgs e)
+        public void fontAction()
         {
             DialogResult fontRes = this.fontDialog.ShowDialog();
             if (fontRes == DialogResult.OK)
@@ -151,7 +151,7 @@ namespace WindowsFormsApp3
 
         }
 
-        public void colorAction(object sender, EventArgs e)
+        public void colorAction()
         {
             DialogResult colorRes = this.colorDialog.ShowDialog();
             if (colorRes == DialogResult.OK)
@@ -163,7 +163,7 @@ namespace WindowsFormsApp3
         }
 
 
-        public void TextChanged(object sender, EventArgs e)
+        public void TextChanged()
         {
             this.isUnSaved = true;
             this.statusBar.Text = "Unsaved Changes";
@@ -171,11 +171,11 @@ namespace WindowsFormsApp3
 
         public void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (isUnSaved)
+            if (this.isUnSaved)
             {
                 DialogResult confirm = MessageBox.Show("Discard Previous Changes ?", "Text Editor", MessageBoxButtons.YesNoCancel);
                 if (confirm == DialogResult.No)
-                    this.saveAction(null, null);
+                    this.saveAction();
                 if (confirm == DialogResult.Cancel)
                     e.Cancel = true;
 
@@ -184,7 +184,7 @@ namespace WindowsFormsApp3
 
 
         //todo
-        public void findAction(object sender, EventArgs e)
+        public void findAction()
         {
             Find find = new Find();
             DialogResult findDiaRes = find.ShowDialog();
@@ -213,7 +213,7 @@ namespace WindowsFormsApp3
             MessageBox.Show($"found {matches} matches.", "Search");
         }
 
-        public void insertImageAction(object sender, EventArgs e)
+        public void insertImageAction()
         {
             DialogResult insertImageDialog = this.imgOpen.ShowDialog();
 
@@ -226,22 +226,22 @@ namespace WindowsFormsApp3
             }
         }
 
-        public void LTRAction(object sender, EventArgs e)
+        public void LTRAction()
         {
             this.richTextBox.RightToLeft = RightToLeft.No;
         }
 
-        public void RTLAction(object sender, EventArgs e)
+        public void RTLAction()
         {
             this.richTextBox.RightToLeft = RightToLeft.Yes;
         }
 
-        public void bulletToolStripMenuItem_Click(object sender, EventArgs e)
+        public void bulletListAction()
         {
             this.richTextBox.SelectionBullet = !this.richTextBox.SelectionBullet;
         }
 
-        public void boldAction(object sender, EventArgs e)
+        public void boldAction()
         {
             Font currentFont = this.richTextBox.Font;
             FontStyle newFontStyle;
@@ -261,7 +261,7 @@ namespace WindowsFormsApp3
             );
         }
 
-        public void italicAction(object sender, EventArgs e)
+        public void italicAction()
         {
             Font currentFont = this.richTextBox.Font;
             FontStyle newFontStyle;
@@ -281,7 +281,7 @@ namespace WindowsFormsApp3
             );
         }
 
-        public void underlineAction(object sender, EventArgs e)
+        public void underlineAction()
         {
             Font currentFont = this.richTextBox.Font;
             FontStyle newFontStyle;
@@ -301,7 +301,7 @@ namespace WindowsFormsApp3
             );
         }
 
-        public void strikeAction(object sender, EventArgs e)
+        public void strikeAction()
         {
             Font currentFont = this.richTextBox.Font;
             FontStyle newFontStyle;
@@ -321,22 +321,37 @@ namespace WindowsFormsApp3
             );
         }
 
-        public bool wordWrapAction(object sender, EventArgs e)
+        public bool wordWrapAction()
         {
             this.richTextBox.WordWrap = !this.richTextBox.WordWrap;
             return this.richTextBox.WordWrap;
         }
 
-        public void zoomAction(object sender, EventArgs e)
+        public int zoomAction(object sender)
         {
             float zoom;
             string value = (sender as ToolStripMenuItem).Text;
             value = value.Replace("%", "");
             float.TryParse(value, out zoom);
             this.richTextBox.ZoomFactor = zoom / 100;
+            return (int)zoom;
+
         }
 
-        public void highlightAction(object sender, EventArgs e)
+        public string zoomAction(string text)
+        {
+            float zoom;
+            float.TryParse(text, out zoom);
+            zoom /= 100;
+            if (zoom >= 1)
+            {
+                this.richTextBox.ZoomFactor = zoom;
+            }
+            return Convert.ToString((int)zoom);
+
+        }
+
+        public void highlightAction()
         {
             DialogResult colorRes = this.colorDialog.ShowDialog();
             if (colorRes == DialogResult.OK)
@@ -347,12 +362,12 @@ namespace WindowsFormsApp3
             }
         }
 
-        public void indentIncrease(object sender, EventArgs e)
+        public void indentIncrease()
         {
             this.richTextBox.SelectionIndent += 4;
         }
 
-        public void indentDecrease(object sender, EventArgs e)
+        public void indentDecrease()
         {
             if (this.richTextBox.SelectionIndent >= 4)
                 this.richTextBox.SelectionIndent -= 4;
