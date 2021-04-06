@@ -186,7 +186,8 @@ namespace WindowsFormsApp3
         //todo
         public void findAction()
         {
-            Find find = new Find();
+            Find find;
+            find = new Find(false);
             DialogResult findDiaRes = find.ShowDialog();
 
             int matches = 0;
@@ -201,14 +202,20 @@ namespace WindowsFormsApp3
             while ((index = this.richTextBox.Text.IndexOf(word, startIndex)) != -1)
             {
                 this.richTextBox.Select(index, word.Length);
-                this.richTextBox.SelectionColor = Color.Red;
+                if (this.richTextBox.SelectionColor == Color.Red)
+                    this.richTextBox.SelectionColor = Color.Black;
+                else
+                    this.richTextBox.SelectionColor = Color.Red;
                 startIndex = index + word.Length;
+                find = new Find(true);
+                DialogResult dr = find.ShowDialog();
+                if (dr == DialogResult.Cancel) break;
                 matches++;
             }
 
             this.richTextBox.SelectionStart = s_start;
             this.richTextBox.SelectionLength = 0;
-            this.richTextBox.SelectionColor = Color.Black;
+            this.richTextBox.SelectionColor = this.colorDialog.Color;
 
             MessageBox.Show($"found {matches} matches.", "Search");
         }

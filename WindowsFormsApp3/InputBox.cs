@@ -12,14 +12,13 @@ namespace WindowsFormsApp3
 {
     public partial class Find : Form
     {
-        public Find()
+        public Find(bool secondRound)
         {
             InitializeComponent();
+            button3.Enabled = secondRound;
+            button2.Enabled = !secondRound;
+            textBox1.Enabled = !secondRound;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
