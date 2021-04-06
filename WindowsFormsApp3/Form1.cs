@@ -329,5 +329,16 @@ namespace WindowsFormsApp3
                 statusLabel.Text = "Back Color Changed";
             }
         }
+
+        private void indentIncrease(object sender, EventArgs e)
+        {
+            richTextBox1.SelectionIndent += 4;
+        }
+
+        private void indentDecrease(object sender, EventArgs e)
+        {
+            if (richTextBox1.SelectionIndent >= 4)
+                richTextBox1.SelectionIndent -= 4;
+        }
     }
 }

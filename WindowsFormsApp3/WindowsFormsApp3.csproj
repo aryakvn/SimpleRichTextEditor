@@ -122,5 +122,11 @@
   <ItemGroup>
     <None Include="Resources\format-color-highlight.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\format-indent-increase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\format-indent-decrease.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

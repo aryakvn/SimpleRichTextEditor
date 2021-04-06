@@ -127,6 +127,9 @@
   <data name="format-size" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\format-size.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="format-color-highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\format-color-highlight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="magnify-plus-outline" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\magnify-plus-outline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -148,7 +151,10 @@
   <data name="file-find-outline" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\file-find-outline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="format-color-highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\format-color-highlight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="format-indent-increase" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\format-indent-increase.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="format-indent-decrease" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\format-indent-decrease.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

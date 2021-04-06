@@ -30,6 +30,9 @@ namespace WindowsFormsApp3
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.forColorIndicator = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -78,6 +81,7 @@ namespace WindowsFormsApp3
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wordWrapMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.zoomToolStripMenuItem = new System.Windows.Forms.ToolStripTextBox();
+            this.backColorIndicator = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.rtfOpenDialog = new System.Windows.Forms.OpenFileDialog();
@@ -92,8 +96,9 @@ namespace WindowsFormsApp3
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.imageOpenDialog = new System.Windows.Forms.OpenFileDialog();
-            this.forColorIndicator = new System.Windows.Forms.Button();
-            this.backColorIndicator = new System.Windows.Forms.Button();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -102,6 +107,8 @@ namespace WindowsFormsApp3
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.button11);
+            this.panel1.Controls.Add(this.button10);
             this.panel1.Controls.Add(this.forColorIndicator);
             this.panel1.Controls.Add(this.button9);
             this.panel1.Controls.Add(this.button8);
@@ -119,6 +126,51 @@ namespace WindowsFormsApp3
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(587, 61);
             this.panel1.TabIndex = 0;
+            // 
+            // button11
+            // 
+            this.button11.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.button11.BackColor = System.Drawing.Color.Transparent;
+            this.button11.BackgroundImage = global::WindowsFormsApp3.Properties.Resources.format_indent_increase;
+            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button11.FlatAppearance.BorderSize = 0;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Location = new System.Drawing.Point(467, 30);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(28, 28);
+            this.button11.TabIndex = 13;
+            this.button11.TabStop = false;
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.indentIncrease);
+            // 
+            // button10
+            // 
+            this.button10.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.button10.BackColor = System.Drawing.Color.Transparent;
+            this.button10.BackgroundImage = global::WindowsFormsApp3.Properties.Resources.format_indent_decrease;
+            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button10.FlatAppearance.BorderSize = 0;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Location = new System.Drawing.Point(501, 30);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(28, 28);
+            this.button10.TabIndex = 12;
+            this.button10.TabStop = false;
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.indentDecrease);
+            // 
+            // forColorIndicator
+            // 
+            this.forColorIndicator.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.forColorIndicator.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.forColorIndicator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.forColorIndicator.Location = new System.Drawing.Point(546, 30);
+            this.forColorIndicator.Name = "forColorIndicator";
+            this.forColorIndicator.Size = new System.Drawing.Size(20, 20);
+            this.forColorIndicator.TabIndex = 10;
+            this.forColorIndicator.UseVisualStyleBackColor = false;
             // 
             // button9
             // 
@@ -445,6 +497,9 @@ namespace WindowsFormsApp3
             this.toolStripSeparator5,
             this.lTRToolStripMenuItem,
             this.rTLToolStripMenuItem,
+            this.toolStripSeparator7,
+            this.toolStripMenuItem13,
+            this.toolStripMenuItem14,
             this.toolStripSeparator4,
             this.bulletToolStripMenuItem});
             this.formatToolStripMenuItem.Name = "formatToolStripMenuItem";
@@ -602,6 +657,18 @@ namespace WindowsFormsApp3
             this.zoomToolStripMenuItem.ToolTipText = "Zoom";
             this.zoomToolStripMenuItem.KeyUp += new System.Windows.Forms.KeyEventHandler(this.zoomToolStripMenuItem_KeyUp);
             // 
+            // backColorIndicator
+            // 
+            this.backColorIndicator.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.backColorIndicator.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.backColorIndicator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.backColorIndicator.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.backColorIndicator.Location = new System.Drawing.Point(555, 38);
+            this.backColorIndicator.Name = "backColorIndicator";
+            this.backColorIndicator.Size = new System.Drawing.Size(20, 20);
+            this.backColorIndicator.TabIndex = 11;
+            this.backColorIndicator.UseVisualStyleBackColor = false;
+            // 
             // richTextBox1
             // 
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -693,28 +760,24 @@ namespace WindowsFormsApp3
             // 
             this.imageOpenDialog.Filter = "JPG |*.jpg|PNG|*.png|Bitmap|*.bmp";
             // 
-            // forColorIndicator
+            // toolStripSeparator7
             // 
-            this.forColorIndicator.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.forColorIndicator.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.forColorIndicator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.forColorIndicator.Location = new System.Drawing.Point(546, 30);
-            this.forColorIndicator.Name = "forColorIndicator";
-            this.forColorIndicator.Size = new System.Drawing.Size(20, 20);
-            this.forColorIndicator.TabIndex = 10;
-            this.forColorIndicator.UseVisualStyleBackColor = false;
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
             // 
-            // backColorIndicator
+            // toolStripMenuItem13
             // 
-            this.backColorIndicator.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.backColorIndicator.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.backColorIndicator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.backColorIndicator.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.backColorIndicator.Location = new System.Drawing.Point(555, 38);
-            this.backColorIndicator.Name = "backColorIndicator";
-            this.backColorIndicator.Size = new System.Drawing.Size(20, 20);
-            this.backColorIndicator.TabIndex = 11;
-            this.backColorIndicator.UseVisualStyleBackColor = false;
+            this.toolStripMenuItem13.Name = "toolStripMenuItem13";
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem13.Text = "Increase Indent";
+            this.toolStripMenuItem13.Click += new System.EventHandler(this.indentIncrease);
+            // 
+            // toolStripMenuItem14
+            // 
+            this.toolStripMenuItem14.Name = "toolStripMenuItem14";
+            this.toolStripMenuItem14.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem14.Text = "Decrease Indent";
+            this.toolStripMenuItem14.Click += new System.EventHandler(this.indentDecrease);
             // 
             // Form1
             // 
@@ -807,6 +870,11 @@ namespace WindowsFormsApp3
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
         private System.Windows.Forms.Button forColorIndicator;
         private System.Windows.Forms.Button backColorIndicator;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem13;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem14;
     }
 }
 
