@@ -39,11 +39,11 @@ namespace WindowsFormsApp3
 
         private void saveAction(object sender, EventArgs e)
         {
-            DialogResult save = saveFileDialog1.ShowDialog();
+            DialogResult save = rftSaveDialog.ShowDialog();
             if (save == DialogResult.OK)
             {
-                this.Text = saveFileDialog1.FileName.ToString();
-                richTextBox1.SaveFile(saveFileDialog1.FileName);
+                this.Text = rftSaveDialog.FileName.ToString();
+                richTextBox1.SaveFile(rftSaveDialog.FileName);
                 this.isUnSaved = false;
                 statusLabel.Text = "Saved Changes";
             }
@@ -56,7 +56,7 @@ namespace WindowsFormsApp3
 
         private void openAction(object sender, EventArgs e)
         {
-            DialogResult open = openFileDialog1.ShowDialog();
+            DialogResult open = rtfOpenDialog.ShowDialog();
             if (open == DialogResult.OK)
             {
                 if (isUnSaved)
@@ -64,8 +64,8 @@ namespace WindowsFormsApp3
                     DialogResult confirm = MessageBox.Show("Discard Previous Changes ?", "Text Editor", MessageBoxButtons.YesNo);
                     if (confirm == DialogResult.No) return;
                 }
-                richTextBox1.LoadFile(openFileDialog1.FileName);
-                this.Text = openFileDialog1.FileName.ToString();
+                richTextBox1.LoadFile(rtfOpenDialog.FileName);
+                this.Text = rtfOpenDialog.FileName.ToString();
                 this.isUnSaved = false;
             }
 
@@ -152,6 +152,42 @@ namespace WindowsFormsApp3
             {
                 DialogResult confirm = MessageBox.Show("Discard Previous Changes ?", "Text Editor", MessageBoxButtons.YesNo);
                 if (confirm == DialogResult.No) e.Cancel = true;
+            }
+        }
+
+
+        //todo
+        private void button6_Click(object sender, EventArgs e)
+        {
+            string word = "Hello";
+            if (word == string.Empty)
+                return;
+
+            int s_start = richTextBox1.SelectionStart, startIndex = 0, index;
+
+            while ((index = richTextBox1.Text.IndexOf(word, startIndex)) != -1)
+            {
+                richTextBox1.Select(index, word.Length);
+                richTextBox1.SelectionColor = Color.Red;
+
+                startIndex = index + word.Length;
+            }
+
+            richTextBox1.SelectionStart = s_start;
+            richTextBox1.SelectionLength = 0;
+            richTextBox1.SelectionColor = Color.Black;
+        }
+
+        private void insertImageAction(object sender, EventArgs e)
+        {
+            DialogResult insertImageDialog = imageOpenDialog.ShowDialog();
+
+            if(insertImageDialog == DialogResult.OK)
+            {
+                IDataObject before = Clipboard.GetDataObject();
+                Clipboard.SetImage(Image.FromFile(imageOpenDialog.FileName));
+                richTextBox1.Paste();
+                Clipboard.SetDataObject(before);
             }
         }
     }
