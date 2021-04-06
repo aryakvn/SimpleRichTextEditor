@@ -166,7 +166,10 @@ namespace WindowsFormsApp3
         {
             Find find = new Find();
             DialogResult findDiaRes = find.ShowDialog();
+
+            int matches = 0;
             string word = find.textBox1.Text;
+
             if (findDiaRes == DialogResult.Cancel) return;
             if (word == string.Empty)
                 return;
@@ -178,11 +181,14 @@ namespace WindowsFormsApp3
                 richTextBox1.Select(index, word.Length);
                 richTextBox1.SelectionColor = Color.Red;
                 startIndex = index + word.Length;
+                matches++;
             }
 
             richTextBox1.SelectionStart = s_start;
             richTextBox1.SelectionLength = 0;
             richTextBox1.SelectionColor = Color.Black;
+
+            MessageBox.Show($"found {matches} matches.", "Search");
         }
 
         private void insertImageAction(object sender, EventArgs e)
