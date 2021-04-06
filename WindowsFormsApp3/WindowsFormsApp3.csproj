@@ -52,10 +52,19 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="InputBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputBox.Designer.cs">
+      <DependentUpon>InputBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputBox.resx">
+      <DependentUpon>InputBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -65,6 +74,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -78,6 +88,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\content-save-outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder-open-outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\content-paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\content-copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\content-cut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file-find-outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\format-size.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\format-color-text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\palette.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\magnify-plus-outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\format-color-highlight.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

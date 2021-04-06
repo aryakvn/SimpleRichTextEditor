@@ -135,6 +135,7 @@ namespace WindowsFormsApp3
             if (colorRes == DialogResult.OK)
             {
                 richTextBox1.SelectionColor = colorDialog1.Color;
+                forColorIndicator.BackColor = colorDialog1.Color;
                 statusLabel.Text = "Color Changed";
             }
         }
@@ -150,16 +151,23 @@ namespace WindowsFormsApp3
         {
             if (isUnSaved)
             {
-                DialogResult confirm = MessageBox.Show("Discard Previous Changes ?", "Text Editor", MessageBoxButtons.YesNo);
-                if (confirm == DialogResult.No) e.Cancel = true;
+                DialogResult confirm = MessageBox.Show("Discard Previous Changes ?", "Text Editor", MessageBoxButtons.YesNoCancel);
+                if (confirm == DialogResult.No)
+                    this.saveAction(null, null);
+                if (confirm == DialogResult.Cancel)
+                    e.Cancel = true;
+
             }
         }
 
 
         //todo
-        private void button6_Click(object sender, EventArgs e)
+        private void findAction(object sender, EventArgs e)
         {
-            string word = "Hello";
+            Find find = new Find();
+            DialogResult findDiaRes = find.ShowDialog();
+            string word = find.textBox1.Text;
+            if (findDiaRes == DialogResult.Cancel) return;
             if (word == string.Empty)
                 return;
 
@@ -169,7 +177,6 @@ namespace WindowsFormsApp3
             {
                 richTextBox1.Select(index, word.Length);
                 richTextBox1.SelectionColor = Color.Red;
-
                 startIndex = index + word.Length;
             }
 
@@ -182,12 +189,144 @@ namespace WindowsFormsApp3
         {
             DialogResult insertImageDialog = imageOpenDialog.ShowDialog();
 
-            if(insertImageDialog == DialogResult.OK)
+            if (insertImageDialog == DialogResult.OK)
             {
                 IDataObject before = Clipboard.GetDataObject();
                 Clipboard.SetImage(Image.FromFile(imageOpenDialog.FileName));
                 richTextBox1.Paste();
                 Clipboard.SetDataObject(before);
+            }
+        }
+
+        private void LTRAction(object sender, EventArgs e)
+        {
+            richTextBox1.RightToLeft = RightToLeft.No;
+        }
+
+        private void RTLAction(object sender, EventArgs e)
+        {
+            richTextBox1.RightToLeft = RightToLeft.Yes;
+        }
+
+        private void bulletToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.SelectionBullet = !richTextBox1.SelectionBullet;
+        }
+
+        private void boldAction(object sender, EventArgs e)
+        {
+            Font currentFont = richTextBox1.Font;
+            FontStyle newFontStyle;
+            if (richTextBox1.SelectionFont.Bold == true)
+            {
+                newFontStyle = FontStyle.Regular;
+            }
+            else
+            {
+                newFontStyle = FontStyle.Bold;
+            }
+
+            richTextBox1.SelectionFont = new Font(
+               currentFont.FontFamily,
+               currentFont.Size,
+               newFontStyle
+            );
+        }
+
+        private void italicAction(object sender, EventArgs e)
+        {
+            Font currentFont = richTextBox1.Font;
+            FontStyle newFontStyle;
+            if (richTextBox1.SelectionFont.Italic == true)
+            {
+                newFontStyle = FontStyle.Regular;
+            }
+            else
+            {
+                newFontStyle = FontStyle.Italic;
+            }
+
+            richTextBox1.SelectionFont = new Font(
+               currentFont.FontFamily,
+               currentFont.Size,
+               newFontStyle
+            );
+        }
+
+        private void underlineAction(object sender, EventArgs e)
+        {
+            Font currentFont = richTextBox1.Font;
+            FontStyle newFontStyle;
+            if (richTextBox1.SelectionFont.Underline == true)
+            {
+                newFontStyle = FontStyle.Regular;
+            }
+            else
+            {
+                newFontStyle = FontStyle.Underline;
+            }
+
+            richTextBox1.SelectionFont = new Font(
+               currentFont.FontFamily,
+               currentFont.Size,
+               newFontStyle
+            );
+        }
+
+        private void strikeAction(object sender, EventArgs e)
+        {
+            Font currentFont = richTextBox1.Font;
+            FontStyle newFontStyle;
+            if (richTextBox1.SelectionFont.Strikeout == true)
+            {
+                newFontStyle = FontStyle.Regular;
+            }
+            else
+            {
+                newFontStyle = FontStyle.Strikeout;
+            }
+
+            richTextBox1.SelectionFont = new Font(
+               currentFont.FontFamily,
+               currentFont.Size,
+               newFontStyle
+            );
+        }
+
+        private void wordWrapAction(object sender, EventArgs e)
+        {
+            richTextBox1.WordWrap = wordWrapMenu.Checked;
+        }
+
+        private void zoomToolStripMenuItem_KeyUp(object sender, KeyEventArgs e)
+        {
+            float zoom;
+            float.TryParse(zoomToolStripMenuItem.Text, out zoom);
+            zoom /= 100;
+            if (zoom >= 1)
+            {
+                richTextBox1.ZoomFactor = zoom;
+            }
+        }
+
+        private void zoomAction(object sender, EventArgs e)
+        {
+            float zoom;
+            string value = (sender as ToolStripMenuItem).Text;
+            value = value.Replace("%", "");
+            float.TryParse(value, out zoom);
+            zoomToolStripMenuItem.Text = Convert.ToString((int)zoom);
+            richTextBox1.ZoomFactor = zoom / 100;
+        }
+
+        private void highlightAction(object sender, EventArgs e)
+        {
+            DialogResult colorRes = colorDialog1.ShowDialog();
+            if (colorRes == DialogResult.OK)
+            {
+                richTextBox1.SelectionBackColor = colorDialog1.Color;
+                backColorIndicator.BackColor = colorDialog1.Color;
+                statusLabel.Text = "Back Color Changed";
             }
         }
     }
