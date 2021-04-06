@@ -119,7 +119,13 @@ namespace WindowsFormsApp3
         //todo
         private void findAction(object sender, EventArgs e)
         {
-            editor.findAction();
+            this.findNextToolStripMenuItem.Enabled = editor.findAction();
+        }
+
+
+        private void findNextAction(object sender, EventArgs e)
+        {
+            this.findNextToolStripMenuItem.Enabled = editor.findNextAction();
         }
 
         private void insertImageAction(object sender, EventArgs e)
@@ -190,6 +196,11 @@ namespace WindowsFormsApp3
         private void indentDecrease(object sender, EventArgs e)
         {
             editor.indentDecrease();
+        }
+
+        private void formatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

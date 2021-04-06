@@ -21,6 +21,9 @@ namespace WindowsFormsApp3
         public Button backColorIndicator;
         public Form1 parrent;
         public bool isUnSaved = false;
+        public int lastWordIndex;
+        public bool isInSearch;
+        public string findWord;
 
 
         public RichEditor(RichTextBox richTextBox,
@@ -169,55 +172,47 @@ namespace WindowsFormsApp3
             this.statusBar.Text = "Unsaved Changes";
         }
 
-        public void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (this.isUnSaved)
-            {
-                DialogResult confirm = MessageBox.Show("Discard Previous Changes ?", "Text Editor", MessageBoxButtons.YesNoCancel);
-                if (confirm == DialogResult.No)
-                    this.saveAction();
-                if (confirm == DialogResult.Cancel)
-                    e.Cancel = true;
-
-            }
-        }
-
-
-        //todo
-        public void findAction()
+        public bool findAction()
         {
             Find find;
             find = new Find(false);
             DialogResult findDiaRes = find.ShowDialog();
 
-            int matches = 0;
             string word = find.textBox1.Text;
+            this.findWord = word;
 
-            if (findDiaRes == DialogResult.Cancel) return;
+            if (findDiaRes == DialogResult.Cancel) return false;
             if (word == string.Empty)
-                return;
+                return false;
 
-            int s_start = this.richTextBox.SelectionStart, startIndex = 0, index;
+            int startIndex = this.lastWordIndex;
+            int index;
+            index = this.richTextBox.Text.IndexOf(word, startIndex);
 
-            while ((index = this.richTextBox.Text.IndexOf(word, startIndex)) != -1)
-            {
-                this.richTextBox.Select(index, word.Length);
-                if (this.richTextBox.SelectionColor == Color.Red)
-                    this.richTextBox.SelectionColor = Color.Black;
-                else
-                    this.richTextBox.SelectionColor = Color.Red;
-                startIndex = index + word.Length;
-                find = new Find(true);
-                DialogResult dr = find.ShowDialog();
-                if (dr == DialogResult.Cancel) break;
-                matches++;
-            }
+            this.richTextBox.Focus();
+            this.richTextBox.Select(index, word.Length);
 
-            this.richTextBox.SelectionStart = s_start;
-            this.richTextBox.SelectionLength = 0;
-            this.richTextBox.SelectionColor = this.colorDialog.Color;
+            startIndex = index + word.Length;
+            this.lastWordIndex = startIndex;
 
-            MessageBox.Show($"found {matches} matches.", "Search");
+            return (this.richTextBox.Text.IndexOf(this.findWord, startIndex)) != -1;
+
+        }
+
+        public bool findNextAction()
+        {
+            int startIndex = this.lastWordIndex;
+            int index;
+            index = this.richTextBox.Text.IndexOf(this.findWord, startIndex);
+
+            this.richTextBox.Focus();
+            this.richTextBox.Select(index, this.findWord.Length);
+
+            startIndex = index + this.findWord.Length;
+            this.lastWordIndex = startIndex;
+
+            return (this.richTextBox.Text.IndexOf(this.findWord, startIndex)) != -1;
+
         }
 
         public void insertImageAction()
