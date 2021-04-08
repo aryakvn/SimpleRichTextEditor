@@ -198,9 +198,9 @@ namespace WindowsFormsApp3
             editor.indentDecrease();
         }
 
-        private void formatToolStripMenuItem_Click(object sender, EventArgs e)
+        private void swapColors(object sender, EventArgs e)
         {
-
+            editor.swapColor();
         }
     }
 }

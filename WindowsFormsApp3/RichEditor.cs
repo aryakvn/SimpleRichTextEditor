@@ -8,6 +8,10 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp3
 {
+
+    /// <summary>
+    /// A richTextBox editor library
+    /// </summary>
     public class RichEditor
     {
         public RichTextBox richTextBox;
@@ -26,6 +30,19 @@ namespace WindowsFormsApp3
         public string findWord;
 
 
+        /// <summary>
+        /// Init 
+        /// </summary>
+        /// <param name="richTextBox">richTextBox instance</param>
+        /// <param name="saveDialog"> saveDialog instance </param>
+        /// <param name="rtfOpen"></param>
+        /// <param name="imgOpen"></param>
+        /// <param name="statusBar"></param>
+        /// <param name="fontDialog"></param>
+        /// <param name="colorDialog"></param>
+        /// <param name="forColorIndicator"></param>
+        /// <param name="backColorIndicator"></param>
+        /// <param name="parrent"></param>
         public RichEditor(RichTextBox richTextBox,
              SaveFileDialog saveDialog,
              OpenFileDialog rtfOpen,
@@ -47,6 +64,9 @@ namespace WindowsFormsApp3
             this.forColorIndicator = forColorIndicator;
             this.backColorIndicator = backColorIndicator;
             this.parrent = parrent;
+
+            this.forColorIndicator.BackColor = this.richTextBox.SelectionColor;
+            this.backColorIndicator.BackColor = this.richTextBox.SelectionBackColor;
         }
 
         public void newAction()
@@ -367,13 +387,27 @@ namespace WindowsFormsApp3
         public void indentIncrease()
         {
             this.richTextBox.SelectionIndent += 4;
+            this.richTextBox.Focus();
         }
 
         public void indentDecrease()
         {
             if (this.richTextBox.SelectionIndent >= 4)
                 this.richTextBox.SelectionIndent -= 4;
+            this.richTextBox.Focus();
         }
 
+        public void swapColor()
+        {
+            Color temp;
+            temp = this.backColorIndicator.BackColor;
+            this.backColorIndicator.BackColor = this.forColorIndicator.BackColor;
+            this.forColorIndicator.BackColor = temp;
+
+            this.richTextBox.SelectionColor = this.forColorIndicator.BackColor;
+            this.richTextBox.SelectionBackColor = this.backColorIndicator.BackColor;
+
+            this.richTextBox.Focus();
+        }
     }
 }
