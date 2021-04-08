@@ -167,11 +167,13 @@ namespace WindowsFormsApp3
             // 
             this.forColorIndicator.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.forColorIndicator.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.forColorIndicator.Cursor = System.Windows.Forms.Cursors.Hand;
             this.forColorIndicator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.forColorIndicator.Location = new System.Drawing.Point(546, 30);
             this.forColorIndicator.Name = "forColorIndicator";
             this.forColorIndicator.Size = new System.Drawing.Size(20, 20);
             this.forColorIndicator.TabIndex = 10;
+            this.forColorIndicator.TabStop = false;
             this.forColorIndicator.UseVisualStyleBackColor = false;
             this.forColorIndicator.Click += new System.EventHandler(this.swapColors);
             // 
@@ -504,14 +506,14 @@ namespace WindowsFormsApp3
             // fontToolStripMenuItem
             // 
             this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fontToolStripMenuItem.Text = "Font";
             this.fontToolStripMenuItem.Click += new System.EventHandler(this.fontAction);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(167, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem1.Text = "Color";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.colorAction);
             // 
@@ -525,13 +527,13 @@ namespace WindowsFormsApp3
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // leftToolStripMenuItem
             // 
             this.leftToolStripMenuItem.Name = "leftToolStripMenuItem";
             this.leftToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.leftToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.leftToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.leftToolStripMenuItem.Text = "Left";
             this.leftToolStripMenuItem.Click += new System.EventHandler(this.leftAlignAction);
             // 
@@ -539,7 +541,7 @@ namespace WindowsFormsApp3
             // 
             this.centerToolStripMenuItem.Name = "centerToolStripMenuItem";
             this.centerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.centerToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.centerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.centerToolStripMenuItem.Text = "Center";
             this.centerToolStripMenuItem.Click += new System.EventHandler(this.centerAlignAction);
             // 
@@ -547,20 +549,20 @@ namespace WindowsFormsApp3
             // 
             this.rightToolStripMenuItem.Name = "rightToolStripMenuItem";
             this.rightToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.rightToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.rightToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.rightToolStripMenuItem.Text = "Right";
             this.rightToolStripMenuItem.Click += new System.EventHandler(this.rightAlignAction);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(167, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem3.Text = "Bold";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.boldAction);
             // 
@@ -568,7 +570,7 @@ namespace WindowsFormsApp3
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(167, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem4.Text = "Italic";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.italicAction);
             // 
@@ -576,7 +578,7 @@ namespace WindowsFormsApp3
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(167, 22);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem5.Text = "Underline";
             this.toolStripMenuItem5.Click += new System.EventHandler(this.underlineAction);
             // 
@@ -585,21 +587,21 @@ namespace WindowsFormsApp3
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
             this.toolStripMenuItem6.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.S)));
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(167, 22);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem6.Text = "Strike";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.strikeAction);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
             // 
             // lTRToolStripMenuItem
             // 
             this.lTRToolStripMenuItem.Name = "lTRToolStripMenuItem";
             this.lTRToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.L)));
-            this.lTRToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.lTRToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.lTRToolStripMenuItem.Text = "LTR";
             this.lTRToolStripMenuItem.Click += new System.EventHandler(this.LTRAction);
             // 
@@ -608,38 +610,38 @@ namespace WindowsFormsApp3
             this.rTLToolStripMenuItem.Name = "rTLToolStripMenuItem";
             this.rTLToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.R)));
-            this.rTLToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.rTLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.rTLToolStripMenuItem.Text = "RTL";
             this.rTLToolStripMenuItem.Click += new System.EventHandler(this.RTLAction);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItem13
             // 
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-            this.toolStripMenuItem13.Size = new System.Drawing.Size(167, 22);
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem13.Text = "Increase Indent";
             this.toolStripMenuItem13.Click += new System.EventHandler(this.indentIncrease);
             // 
             // toolStripMenuItem14
             // 
             this.toolStripMenuItem14.Name = "toolStripMenuItem14";
-            this.toolStripMenuItem14.Size = new System.Drawing.Size(167, 22);
+            this.toolStripMenuItem14.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem14.Text = "Decrease Indent";
             this.toolStripMenuItem14.Click += new System.EventHandler(this.indentDecrease);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
             // 
             // bulletToolStripMenuItem
             // 
             this.bulletToolStripMenuItem.Name = "bulletToolStripMenuItem";
-            this.bulletToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.bulletToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bulletToolStripMenuItem.Text = "Bullet";
             this.bulletToolStripMenuItem.Click += new System.EventHandler(this.bulletToolStripMenuItem_Click);
             // 
@@ -690,7 +692,6 @@ namespace WindowsFormsApp3
             // 
             // zoomToolStripMenuItem
             // 
-            this.zoomToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.zoomToolStripMenuItem.MaxLength = 3;
             this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
             this.zoomToolStripMenuItem.Size = new System.Drawing.Size(180, 23);
@@ -702,17 +703,20 @@ namespace WindowsFormsApp3
             // 
             this.backColorIndicator.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.backColorIndicator.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.backColorIndicator.Cursor = System.Windows.Forms.Cursors.Hand;
             this.backColorIndicator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backColorIndicator.ForeColor = System.Drawing.SystemColors.ControlText;
             this.backColorIndicator.Location = new System.Drawing.Point(555, 38);
             this.backColorIndicator.Name = "backColorIndicator";
             this.backColorIndicator.Size = new System.Drawing.Size(20, 20);
             this.backColorIndicator.TabIndex = 11;
+            this.backColorIndicator.TabStop = false;
             this.backColorIndicator.UseVisualStyleBackColor = false;
             this.backColorIndicator.Click += new System.EventHandler(this.swapColors);
             // 
             // richTextBox1
             // 
+            this.richTextBox1.AcceptsTab = true;
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox1.Location = new System.Drawing.Point(0, 61);
             this.richTextBox1.Name = "richTextBox1";
