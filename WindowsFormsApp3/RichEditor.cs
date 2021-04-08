@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -409,5 +410,64 @@ namespace WindowsFormsApp3
 
             this.richTextBox.Focus();
         }
+
+        public void markdown()
+        {
+            //bold 
+            Regex blodRg = new Regex(@"\*{2}(.*?)\*{2}");
+            Regex italicRg = new Regex(@"_{2}(.*?)_{2}");
+
+            Font currentFont = this.richTextBox.Font;
+            FontStyle boldFont = FontStyle.Bold;
+            FontStyle italicFont = FontStyle.Italic;
+
+
+            //Apply bold pattern
+            MatchCollection matchCollection = blodRg.Matches(this.richTextBox.Text);
+            for (int count = 0; count < matchCollection.Count; count++)
+            {
+                int selectionStart = matchCollection[count].Index;
+                int selectionLength = matchCollection[count].Value.Length;
+                this.richTextBox.SelectionStart = selectionStart;
+                this.richTextBox.SelectionLength = selectionLength;
+                this.richTextBox.SelectionFont = new Font(
+                         currentFont.FontFamily,
+                         currentFont.Size,
+                         boldFont
+                );
+            }
+
+            //Apply Italic pattern
+            matchCollection = italicRg.Matches(this.richTextBox.Text);
+            for (int count = 0; count < matchCollection.Count; count++)
+            {
+                int selectionStart = matchCollection[count].Index;
+                int selectionLength = matchCollection[count].Value.Length;
+                this.richTextBox.SelectionStart = selectionStart;
+                this.richTextBox.SelectionLength = selectionLength;
+                this.richTextBox.SelectionFont = new Font(
+                         currentFont.FontFamily,
+                         currentFont.Size,
+                         italicFont
+                );
+            }
+
+
+            //Cleanup
+            while(Regex.Matches(this.richTextBox.Text, @"\*{2}").Count != 0)
+            {
+                this.richTextBox.SelectionStart = Regex.Match(this.richTextBox.Text, @"\*{2}").Index;
+                this.richTextBox.SelectionLength = 2;
+                this.richTextBox.SelectedText = "";
+            }
+
+            while (Regex.Matches(this.richTextBox.Text, @"_{2}").Count != 0)
+            {
+                this.richTextBox.SelectionStart = Regex.Match(this.richTextBox.Text, @"_{2}").Index;
+                this.richTextBox.SelectionLength = 2;
+                this.richTextBox.SelectedText = "";
+            }
+        }
+
     }
 }

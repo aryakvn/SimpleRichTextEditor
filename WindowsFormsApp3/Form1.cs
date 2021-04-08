@@ -173,11 +173,6 @@ namespace WindowsFormsApp3
             wordWrapMenu.Checked = editor.wordWrapAction();
         }
 
-        private void zoomToolStripMenuItem_KeyUp(object sender, KeyEventArgs e)
-        {
-            zoomToolStripMenuItem.Text = editor.zoomAction(zoomToolStripMenuItem.Text);
-        }
-
         private void zoomAction(object sender, EventArgs e)
         {
             editor.zoomAction(sender);
@@ -201,6 +196,11 @@ namespace WindowsFormsApp3
         private void swapColors(object sender, EventArgs e)
         {
             editor.swapColor();
+        }
+
+        private void parseMarkdownToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            editor.markdown();
         }
     }
 }
