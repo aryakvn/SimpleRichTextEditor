@@ -420,6 +420,7 @@ namespace WindowsFormsApp3
             Font currentFont = this.richTextBox.Font;
             FontStyle boldFont = FontStyle.Bold;
             FontStyle italicFont = FontStyle.Italic;
+            FontStyle boldItalicFont = FontStyle.Bold | FontStyle.Italic;
 
 
             //Apply bold pattern
